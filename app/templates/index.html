@@ -1,0 +1,99 @@
+{% extends 'base.html'%}
+
+{% block app_content %}
+
+    <section id="intro" class="container">
+
+      <div class="row">
+        <div class="col-sm-offset-1 col-sm-2">
+          <img class="newappIcon" src="../static/images/newapp-icon.png" alt="newapp"/>
+        </div>
+        <div class="col-sm-offset-1 col-sm-7">
+          <h1 class="blue"> Flask Simple Form </h1>
+          <h2> Monday, February 29th, 11:00 am Pacific </h2>
+        </div>
+      </div>
+
+      <div class="row">
+        <hr class="col-sm-offset-1 col-sm-10 blue"/>
+      </div>
+
+      <div class="row">
+        <form class="form-horizontal" method="post" action="/registration"
+          role="form" id="registration-form">
+          <div class="controls">
+          <p class="col-sm-offset-4 col-sm-8 blue"
+            style="font-weight: bold; font-size: 120%;">
+            Join us! Fill in your details and click Submit.</p>
+
+          <div class="form-group">
+            <label class="col-sm-3 col-sm-offset-1 control-label"
+              for="firstName">First name:</label>
+            <div class="col-sm-3">
+              <input class="form-control" type="text" id="firstName"
+                name="firstName" placeholder="First name">
+            </div>
+            <label class="col-sm-1 control-label" for="lastName">Last: </label>
+            <div class="col-sm-3">
+              <input class="form-control" type="text" id="lastName"
+                name="lastName" placeholder="Last name">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 col-sm-offset-2 control-label"
+              for="email">Email:</label>
+            <div class="col-sm-7">
+              <input class="form-control" type="email" id="email" name="email"
+                placeholder="you@example.com">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 col-sm-offset-2 control-label"
+              for="company">Password:</label>
+            <div class="col-sm-7">
+              <input class="form-control" type="text" id="password"
+                name="password" placeholder="Your Password">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 col-sm-offset-2 control-label"
+              for="company">Company:</label>
+            <div class="col-sm-7">
+              <input class="form-control" type="text" id="company"
+                name="company" placeholder="You, Inc.">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 col-sm-offset-2 control-label"
+              for="city">City:</label>
+            <div class="col-sm-3">
+              <input class="form-control" type="text" id="city" name="city"
+                placeholder="Anytown">
+            </div>
+            <label class="col-sm-1 control-label" for="state">State:</label>
+            <div class="col-sm-3">
+              <input class="form-control" type="text" id="state" name="state"
+                placeholder="NC">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-8">
+              <button class="btn btn-lg"
+                style="border: none; background-color: #00aed1; font-weight: bold;"
+                type="submit">Submit</button>
+            </div>
+          </div>
+
+        </div>
+        </form>
+        
+      </div>
+    </section>
+
+
+{% endblock %}
