@@ -1,7 +1,24 @@
 {% extends 'base.html' %}
-
+{% block refresh %}
+<!-- <meta http-equiv ="refresh" content="1"> -->
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+{% endblock %}
 {% block app_content %}
+<script type="text/javascript" charset="utf-8">
 
+$(document).ready(function() {
+	namespace = '/test';
+  	var socket = io.connect('http://' + document.domain + ':' + location.port + namespace);
+  	console.log(socket);
+
+	socket.on('my_response', function(msg) {
+               	$('#time').text (msg.time.day_name + ", " + msg.time.day + " " + msg.time.month + " " + msg.time.year + ", " + msg.time.hour + ":" + msg.time.minute + ":" + msg.time.second + " " + msg.time.pm_am);
+            });
+        });
+
+
+</script>
     <section id="intro" class="container">
       <div class="row" style="padding-top: 8%;">
         <div class="col-sm-offset-1 col-sm-2">
@@ -10,11 +27,12 @@
         <div class="col-sm-offset-1 col-sm-7">
           <h1>Thank You for Registering!</h1>
           <p style="padding-top: 20px;">You are now registered
-            for <a href="#" class="blue" style="font-weight: bold;"> Flask Simple Form App</a>.</p>
+            for <a href="https://github.com/AhmNouira/flask-simple-form" target="_blank" class="blue" style="font-weight: bold;"> Flask Simple Form App</a>.</p>
 
-          <p> We look forward to seeing you
-            <span class="blue" style="font-weight: bold;"> Monday, February
-              29th at 11:00 am Pacific.</span></p>
+          <p> We look forward to seeing you.</p>
+          <p> Today is
+            <span id ="time" class="blue" style="font-weight: bold; color:#00a000;"> {{time['day_name']}}, {{time['day']}} {{time['month']}} {{time['year'] }}, {{time['hour']}}:{{time['minute']}}:{{time['second']}} {{time['pm_am']}}
+            </span></p>
         </div>
       </div>
     </section>

@@ -1,10 +1,19 @@
-# Flask Simple From 
-This is a simple flask register-form application designed to run in multiple ways: 
+# flask-simple-form
+This is a simple flask register-form application designed to run in multiple ways
+
+# Notes
+* This app use _[MongoDB](https://www.mongodb.com/)_ as database supported by _[Flask-MongoAlchemy](https://pythonhosted.org/Flask-MongoAlchemy/)_ extension
+=> So you have to install **MongoDB** database to run this locally 
+ 
+* uses _[Flask-SocketIO](https://github.com/miguelgrinberg/Flask-SocketIO)_ along with _Ajax_ for real time update
+
 
 # Overview
 ![index](/img/index.png)
+![registered](/img/registered.png)
 
 # Running this app
+
 
 This app is designed to run in different ways:
 1. As a standalone app running on your machine
@@ -15,11 +24,13 @@ This app is designed to run in different ways:
 2. `git clone` the project then `cd` into the directory
 3. run `virtualenv -p /usr/bin/python3 venv`or `python -m venv venv` to create a virtual environment
 4. activate it using `source venv/bin/activate`
-5. `pip install -r requirements/dev.txt` to install the app libaries and it dependencies
+5. `pip install -r requirements/prod_local.txt.txt` to install the app libaries and it dependencies
+6. install MongoDB database `sudo apt-get install mongodb`
+7. check your database is installed and print its version using `mongo --version`
 
 ### running the app
 
 * After installing, you need to set your application _environment variable_ by running `export FLASK_APP=app.py`
-* run the server using `flask run --reload --debugger`
-* Access the running app in a browser at the URL written to the console (most likely http://localhost:5000)
+* run the server using the script file `run.sh` by typing `./run`
+* Access the running app in a browser at the URL written to the console (most likely http://0.0.0.0:5000)
  

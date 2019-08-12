@@ -52,6 +52,10 @@ h1 {
 }
 
 
+#red {
+    color: #d10046;
+}
+
 table {
 	table-layout: fixed;
 	width: 800px;

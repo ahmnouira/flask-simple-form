@@ -1,6 +1,36 @@
 {% extends 'base.html'%}
 
+{% block refresh %}
+<!-- <meta http-equiv ="refresh" content="1"> -->
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+{% endblock %}
 {% block app_content %}
+
+<script type="text/javascript" charset="utf-8">
+
+		/*
+			var day_name = "{{time['day_name']}}";
+			var day = "{{time['day']}}";
+			var month = "{{time['month']}}";
+			var year = "{{time['year']}}";
+			var hour = "{{time['hour']}}";
+			var minute = "{{time['minute']}}";
+			var second = "{{time['second']}}";
+			var pm_am = "{{time['pm_am']}}"; */
+
+
+	$(document).ready(function() {
+	namespace = '/test';
+  	var socket = io.connect('http://' + document.domain + ':' + location.port + namespace);
+  	console.log(socket);
+	 
+	socket.on('my_response', function(msg) {
+               	$('#time').html (msg.time.day_name + ", " + msg.time.day + " " + msg.time.month + " " + msg.time.year + ", " + msg.time.hour + ":" + msg.time.minute + ":" + msg.time.second + " " + msg.time.pm_am + " <span class='blue'> Real-Time-Update </span>" );
+            });
+        });
+
+</script>
 
     <section id="intro" class="container">
 
@@ -10,7 +40,9 @@
         </div>
         <div class="col-sm-offset-1 col-sm-7">
           <h1 class="blue"> Flask Simple Form </h1>
-          <h2> Monday, February 29th, 11:00 am Pacific </h2>
+           
+          <h2 id="time"> {{time['day_name']}}, {{time['day']}} {{time['month']}} {{time['year'] }}, {{time['hour']}}:{{time['minute']}}:{{time['second']}} {{time['pm_am']}} <span class="blue">Real-Time-Update</span> </h2>
+
         </div>
       </div>
 
@@ -18,80 +50,100 @@
         <hr class="col-sm-offset-1 col-sm-10 blue"/>
       </div>
 
+
       <div class="row">
-        <form class="form-horizontal" method="post" action="/registration"
-          role="form" id="registration-form">
+        <div class="form-horizontal">
+        <form action=" " method="post" role="form" id="registration-form">
+           {{ form.hidden_tag() }}
           <div class="controls">
           <p class="col-sm-offset-4 col-sm-8 blue"
             style="font-weight: bold; font-size: 120%;">
             Join us! Fill in your details and click Submit.</p>
 
           <div class="form-group">
-            <label class="col-sm-3 col-sm-offset-1 control-label"
-              for="firstName">First name:</label>
+
+        <!--    <label class="col-sm-3 col-sm-offset-1 control-label" for="firstName">First name:</label>   -->
+              {{form.first_name.label(class="col-sm-3 col-sm-offset-1 control-label")}}
+
             <div class="col-sm-3">
-              <input class="form-control" type="text" id="firstName"
-                name="firstName" placeholder="First name">
+
+        <!--     <input class="form-control" type="text" id="firstName" name="firstName" placeholder="First name">  -->
+
+              {{ form.first_name(class="form-control", placeholder="First name", autofocus=True)}}
             </div>
-            <label class="col-sm-1 control-label" for="lastName">Last: </label>
-            <div class="col-sm-3">
-              <input class="form-control" type="text" id="lastName"
-                name="lastName" placeholder="Last name">
+
+        <!--    <label class="col-sm-1 control-label" for="lastName">Last: </label>  -->
+
+              {{form.last_name.label(class="col-sm-1 control-label")}}
+              <div class="col-sm-3">
+          <!--    <input class="form-control" type="text" id="lastName"  name="lastName" placeholder="Last name">  -->
+
+              {{ form.last_name(class="form-control", placeholder="Last name")}}
+
             </div>
+
           </div>
 
           <div class="form-group">
-            <label class="col-sm-2 col-sm-offset-2 control-label"
-              for="email">Email:</label>
+        <!--    <label class="col-sm-2 col-sm-offset-2 control-label"
+              for="email">Email:</label> -->
+               {{ form.email.label(class="col-sm-2 col-sm-offset-2 control-label") }}
+
             <div class="col-sm-7">
-              <input class="form-control" type="email" id="email" name="email"
-                placeholder="you@example.com">
+        <!--      <input class="form-control" type="email" id="email" name="email"
+                placeholder="you@example.com"> -->
+                {{ form.email(class="form-control", placeholder="you@example.com") }}
+
             </div>
           </div>
 
           <div class="form-group">
-            <label class="col-sm-2 col-sm-offset-2 control-label"
-              for="company">Password:</label>
+          <!--  <label class="col-sm-2 col-sm-offset-2 control-label" for="company">Password:</label> -->
+              {{ form.password.label(class="col-sm-2 col-sm-offset-2 control-label")}}
             <div class="col-sm-7">
-              <input class="form-control" type="text" id="password"
-                name="password" placeholder="Your Password">
+        <!--   <input class="form-control" type="text" id="password" name="password" placeholder="Your Password"> -->
+              {{ form.password(class="form-control", placeholder="your Password")}}
             </div>
           </div>
 
           <div class="form-group">
-            <label class="col-sm-2 col-sm-offset-2 control-label"
-              for="company">Company:</label>
+        <!-- <label class="col-sm-2 col-sm-offset-2 control-label" for="company">Company:</label> -->
+              {{ form.company.label(class="col-sm-2 col-sm-offset-2 control-label")}}
             <div class="col-sm-7">
-              <input class="form-control" type="text" id="company"
-                name="company" placeholder="You, Inc.">
+      <!-- <input class="form-control" type="text" id="company" name="company" placeholder="You, Inc."> -->
+               {{ form.company(class="form-control", placeholder="You, Inc.")}}
             </div>
           </div>
 
           <div class="form-group">
-            <label class="col-sm-2 col-sm-offset-2 control-label"
-              for="city">City:</label>
+
+      <!--   <label class="col-sm-2 col-sm-offset-2 control-label" for="city">City:</label> -->
+              {{ form.city.label(class="col-sm-2 col-sm-offset-2 control-label")}}
             <div class="col-sm-3">
-              <input class="form-control" type="text" id="city" name="city"
-                placeholder="Anytown">
+      <!--    <input class="form-control" type="text" id="city" name="city" placeholder="Anytown"> -->
+              {{ form.city(class="form-control", placeholder="Anytown")}}
+
             </div>
-            <label class="col-sm-1 control-label" for="state">State:</label>
+
+      <!--    <label class="col-sm-1 control-label" for="state">State:</label> -->
+            {{ form.state.label(class="col-sm-1 control-label")}}
             <div class="col-sm-3">
-              <input class="form-control" type="text" id="state" name="state"
-                placeholder="NC">
+      <!--   <input class="form-control" type="text" id="state" name="state" placeholder="NC"> -->
+            {{ form.state(class="form-control", placeholder="NC")}}
             </div>
           </div>
 
           <div class="form-group">
             <div class="col-sm-offset-4 col-sm-8">
-              <button class="btn btn-lg"
-                style="border: none; background-color: #00aed1; font-weight: bold;"
-                type="submit">Submit</button>
+        <!-- <button class="btn btn-lg" style="border: none; background-color: #00aed1; font-weight: bold;"type="submit">Submit</button> -->
+            {{ form.submit(class="btn btn-lg", style="border: none; background-color: #00aed1; font-weight: bold;" ) }}
+
             </div>
           </div>
 
-        </div>
+          </div>
         </form>
-        
+        </div>
       </div>
     </section>
 
