@@ -5,12 +5,14 @@ This is a simple flask register-form application designed to run in multiple way
 * This app use _[MongoDB](https://www.mongodb.com/)_ as database supported by _[Flask-MongoAlchemy](https://pythonhosted.org/Flask-MongoAlchemy/)_ extension
 => So you have to install **MongoDB** database to run this locally 
  
-* uses _[Flask-SocketIO](https://github.com/miguelgrinberg/Flask-SocketIO)_ along with _Ajax_ for real time update
+* uses _[Flask-SocketIO](https://github.com/miguelgrinberg/Flask-SocketIO)_ along with _[Ajax](https://en.wikipedia.org/wiki/Ajax_(programming)_ for real time update
 
+* you will get an email if you have registered 
 
 # Overview
 ![index](/img/index.png)
 ![registered](/img/registered.png)
+![email](/img/email.png)
 
 # Running this app
 
@@ -31,6 +33,7 @@ This app is designed to run in different ways:
 ### running the app
 
 * After installing, you need to set your application _environment variable_ by running `export FLASK_APP=app.py`
+* run `export MAIL_PASSWORD=<your-email-password>` to set your email password _environment variable_ 
 * run the server using the script file `run.sh` by typing `./run`
 * Access the running app in a browser at the URL written to the console (most likely http://0.0.0.0:5000)
  
