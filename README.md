@@ -5,7 +5,7 @@ This is a simple flask register-form application designed to run in multiple way
 * This app use _[MongoDB](https://www.mongodb.com/)_ as database supported by _[Flask-MongoAlchemy](https://pythonhosted.org/Flask-MongoAlchemy/)_ extension
 => So you have to install **MongoDB** database to run this locally 
  
-* uses _[Flask-SocketIO](https://github.com/miguelgrinberg/Flask-SocketIO)_ along with _[Ajax](https://en.wikipedia.org/wiki/Ajax_(programming)_ for real time update
+* uses _[Flask-SocketIO](https://github.com/miguelgrinberg/Flask-SocketIO)_ along with _[Ajax](https://en.wikipedia.org/wiki/Ajax_(programming))_ for real time update
 
 * you will get an email if you have registered 
 
@@ -26,7 +26,7 @@ This app is designed to run in different ways:
 2. `git clone` the project then `cd` into the directory
 3. run `virtualenv -p /usr/bin/python3 venv`or `python -m venv venv` to create a virtual environment
 4. activate it using `source venv/bin/activate`
-5. `pip install -r requirements/prod_local.txt.txt` to install the app libaries and it dependencies
+5. `pip install -r requirements/prod_local.txt` to install the app libaries and it dependencies
 6. install MongoDB database `sudo apt-get install mongodb`
 7. check your database is installed and print its version using `mongo --version`
 

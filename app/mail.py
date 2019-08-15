@@ -15,6 +15,6 @@ def send_sync_email(app, msg):
         mail.send(msg)
 
 def send_mail(user):
-    send_email_helper('[Flask-Simple-Form] Notification', sender=app.config['MAIL_USERNAME'], \
+    send_email_helper(' [flask-simple-form] ', sender=app.config['MAIL_USERNAME'], \
     recipients=[user.email], text_body = render_template('email/register_notification.txt', user=user),
     html_body = render_template('email/register_notification.html', user=user))

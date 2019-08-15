@@ -1,6 +1,6 @@
 Dear {{user.first_name }}, {{ user.last_name}}
-Thank you for your registering to our Flask-Simple-Form
+Thank you for your registering to our flask-simple-form
 
 Sincerely,
 
-  ^^  Flask-Simple-Form Team ^^
+  ^^  flask-simple-form Team ^^

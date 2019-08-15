@@ -26,7 +26,7 @@
   	console.log(socket);
 	 
 	socket.on('my_response', function(msg) {
-               	$('#time').html (msg.time.day_name + ", " + msg.time.day + " " + msg.time.month + " " + msg.time.year + ", " + msg.time.hour + ":" + msg.time.minute + ":" + msg.time.second + " " + msg.time.pm_am + " <span class='blue'> Real-Time-Update </span>" );
+               	$('#time').html (msg.time.day_name + ", " + msg.time.day + " " + msg.time.month + " " + msg.time.year + ", " + msg.time.hour + ":" + msg.time.minute + ":" + msg.time.second + " " + msg.time.pm_am + " <span class='blue'> Real-Time </span>" );
             });
         });
 
@@ -39,9 +39,9 @@
           <img class="newappIcon" src="../static/images/newapp-icon.png" alt="newapp"/>
         </div>
         <div class="col-sm-offset-1 col-sm-7">
-          <h1 class="blue"> Flask Simple Form </h1>
+          <h1 class="blue"> flask-simple-form </h1>
            
-          <h2 id="time"> {{time['day_name']}}, {{time['day']}} {{time['month']}} {{time['year'] }}, {{time['hour']}}:{{time['minute']}}:{{time['second']}} {{time['pm_am']}} <span class="blue">Real-Time-Update</span> </h2>
+          <h2 id="time"> {{time['day_name']}}, {{time['day']}} {{time['month']}} {{time['year'] }}, {{time['hour']}}:{{time['minute']}}:{{time['second']}} {{time['pm_am']}} <span class="blue">Real-Time</span> </h2>
 
         </div>
       </div>
